@@ -1,27 +1,111 @@
-# StackIt
+TEAM NO. : 206
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
+
+# QuickCourt
+
+QuickCourt is a sports facility booking platform that allows users to find, book, and review sports venues and courts.  
+It supports online payments, time slot management, and real-time notifications.
+
+## ER Diagram
+
+Below is the Entity-Relationship (ER) diagram representing the QuickCourt data model:
+
+![QuickCourt ER Diagram](docs/quickcourt_er_diagram.png)
+
+### Description of Entities
+- **User** → Stores authentication & profile info (with avatar, roles: player, facility owner, admin).
+- **Sport** → Categories like Cricket, Football, Badminton.
+- **Venue** → Physical sports facilities owned by facility owners, tagged with sports.
+- **VenuePhoto** → Multiple images for a venue.
+- **Court** → Bookable units within a venue.
+- **TimeSlot** → Available booking slots for courts.
+- **Booking** → Links a user to a time slot and tracks payment & status.
+- **Review** → Ratings and comments for venues.
+- **Notification** → In-app messages for users.
+
+---
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run:
+```bash
+ng serve
+Navigate to http://localhost:4200/.
+The app will auto-reload when you change any source file.
 
-## Code scaffolding
+Code scaffolding
+Run:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+bash
+Copy
+Edit
+ng generate component component-name
+You can also use:
 
-## Build
+bash
+Copy
+Edit
+ng generate directive|pipe|service|class|guard|interface|enum|module
+Build
+Run:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+bash
+Copy
+Edit
+ng build
+The build artifacts will be stored in the dist/ directory.
 
-## Running unit tests
+Running unit tests
+Run:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+bash
+Copy
+Edit
+ng test
+Executes unit tests via Karma.
 
-## Running end-to-end tests
+Running end-to-end tests
+Run:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+bash
+Copy
+Edit
+ng e2e
+Executes end-to-end tests using a supported framework.
+To use this command, first install the package that implements e2e testing.
 
-## Further help
+Further help
+For more help on Angular CLI:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+bash
+Copy
+Edit
+ng help
+Or visit Angular CLI Overview and Command Reference.
+
+Backend API
+QuickCourt uses Django REST Framework as its backend, with endpoints for:
+
+User authentication (JWT)
+
+Venue & Court management
+
+Booking & Payment processing (Razorpay)
+
+Reviews & Notifications
+
+Features
+User roles: Player, Facility Owner, Admin.
+
+Booking system with real-time slot availability.
+
+Online payments via Razorpay.
+
+SMS notifications via Twilio.
+
+In-app notifications for booking updates.
+
+Review system for venues.
+
+
+VIDEO LINK : https://www.loom.com/share/a67a03fda46e49e789a8cbace01fa055?sid=946ceab2-918a-4875-a283-44c86198ea53
