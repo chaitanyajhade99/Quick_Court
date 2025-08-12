@@ -1,0 +1,27 @@
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h3>Admin Panel</h3>
+    </div>
+    <nav class="sidebar-nav">
+      <a routerLink="/admin-panel/dashboard" routerLinkActive="active">
+        Dashboard
+      </a>
+      <a routerLink="/admin-panel/facility-approval" routerLinkActive="active">
+        Facility Approval
+      </a>
+      <a routerLink="/admin-panel/user-management" routerLinkActive="active">
+        User Management
+      </a>
+      <a routerLink="/admin-panel/reports" routerLinkActive="active">
+        Reports
+      </a>
+      <a routerLink="/admin-panel/profile" routerLinkActive="active">
+        Profile
+      </a>
+    </nav>
+  </aside>
+  <main class="admin-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

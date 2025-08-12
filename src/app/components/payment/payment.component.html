@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="payment-wrapper" *ngIf="pendingBooking; else noBooking">
+    <div class="order-summary">
+      <h2 class="summary-title">Order Summary</h2>
+      <div class="summary-item">
+        <span class="label">Turf Name</span>
+        <span class="value">{{ pendingBooking.turfName }}</span>
+      </div>
+      <div class="summary-item">
+        <span class="label">Date & Time</span>
+        <span class="value">{{ pendingBooking.date | date:'fullDate' }} at {{ pendingBooking.slot }}</span>
+      </div>
+      <div class="summary-item total">
+        <span class="label">Amount Payable</span>
+        <span class="value">₹{{ pendingBooking.price }}</span>
+      </div>
+    </div>
+
+    <div class="payment-form-container">
+      <h2 class="form-title">Secure Payment</h2>
+      <p class="form-subtitle">Proceed to pay with Razorpay.</p>
+      <button class="btn btn-primary payment-btn" (click)="initiatePayment()" [disabled]="isLoading">
+        <span *ngIf="!isLoading">Pay ₹{{ pendingBooking.price }}</span>
+        <span *ngIf="isLoading" class="spinner"></span>
+      </button>
+    </div>
+  </div>
+  <ng-template #noBooking>
+    <div class="payment-wrapper">
+      <div class="order-summary">
+         <h2>Error</h2>
+         <p>No pending booking found. Please select a turf and slot first.</p>
+         <a routerLink="/" class="btn btn-primary">Find a Turf</a>
+      </div>
+    </div>
+  </ng-template>
+</div>

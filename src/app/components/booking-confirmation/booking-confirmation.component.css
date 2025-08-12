@@ -1,0 +1,120 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px);
+}
+
+.confirmation-wrapper {
+  background: var(--white-color);
+  padding: 3rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.confirmation-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--dark-gray-color);
+  margin-bottom: 0.5rem;
+}
+
+.confirmation-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2.5rem;
+}
+
+body.theme-dark .confirmation-subtitle {
+  color: #aaa;
+}
+
+.details-box {
+  border: 1px solid var(--medium-gray-color);
+  border-radius: var(--border-radius);
+  margin-bottom: 2.5rem;
+  text-align: left;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+}
+
+.detail-item:not(:last-child) {
+  border-bottom: 1px solid var(--medium-gray-color);
+}
+
+.detail-item .label {
+  color: #6c757d;
+  font-weight: 500;
+}
+
+body.theme-dark .detail-item .label {
+  color: #aaa;
+}
+
+.detail-item .value {
+  font-weight: 600;
+  color: var(--dark-gray-color);
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: var(--white-color);
+}
+
+.confirmation-icon {
+  margin-bottom: 1.5rem;
+}
+
+.checkmark {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 3;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  margin: 0 auto;
+  box-shadow: inset 0px 0px 0px var(--success-color);
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.checkmark-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 3;
+  stroke-miterlimit: 10;
+  stroke: var(--success-color);
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+  100% { stroke-dashoffset: 0; }
+}
+@keyframes scale {
+  0%, 100% { transform: none; }
+  50% { transform: scale3d(1.1, 1.1, 1); }
+}
+@keyframes fill {
+  100% { box-shadow: inset 0px 0px 0px 40px var(--success-color); }
+}

@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="header-bar">
+    <h2 class="page-header">Admin Dashboard</h2>
+    <a routerLink="/admin/turfs" class="btn btn-primary">Manage Turfs</a>
+  </div>
+
+  <div class="dashboard-grid">
+    <div class="calendar-view">
+      <h3>Daily Booking Schedule</h3>
+      <div class="date-picker-group">
+        <button class="btn-nav" (click)="changeDay(-1)">‹ Prev Day</button>
+        <input 
+          type="date" 
+          class="date-input"
+          id="schedule-date" 
+          [(ngModel)]="selectedDate" 
+          (change)="loadSchedule()">
+        <button class="btn-nav" (click)="changeDay(1)">Next Day ›</button>
+      </div>
+      
+      <div class="schedule-container" *ngIf="dailySchedule$ | async as schedule">
+        <div class="turf-schedule" *ngFor="let turf of schedule">
+          <h4>{{ turf.turfName }}</h4>
+          <div class="slots-agenda">
+            <div class="slot-item" *ngFor="let slot of turf.slots">
+              <span class="slot-time">{{ slot.time }}</span>
+              <span class="slot-status" [class.booked]="slot.booking && !slot.booking.isBlocked" [class.blocked]="slot.booking?.isBlocked">
+                <ng-container *ngIf="slot.booking; else available">
+                  <span *ngIf="slot.booking.isBlocked">{{ slot.booking.reason }}</span>
+                  <span *ngIf="!slot.booking.isBlocked">Booked by User ID: {{ slot.booking.userId }}</span>
+                </ng-container>
+                <ng-template #available>Available</ng-template>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-slot-view">
+      <h3>Block a Time Slot</h3>
+      <p>Block a slot for maintenance or a private event on <strong>{{ selectedDate | date:'fullDate' }}</strong>.</p>
+      <form [formGroup]="blockSlotForm" (ngSubmit)="onBlockSlot()">
+        <div class="form-group">
+          <label for="turf">Select Turf</label>
+          <select id="turf" formControlName="turfId">
+            <option value="" disabled>Choose a turf...</option>
+            <option *ngFor="let turf of turfs$ | async" [value]="turf.id">{{ turf.name }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="slot">Select Slot</label>
+          <select id="slot" formControlName="slot">
+            <option value="" disabled>Choose a slot...</option>
+            <option *ngFor="let slot of allSlots" [value]="slot">{{ slot }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="reason">Reason for Blocking</label>
+          <input id="reason" type="text" formControlName="reason">
+        </div>
+        <button type="submit" class="btn btn-danger" [disabled]="blockSlotForm.invalid">Block Slot</button>
+      </form>
+    </div>
+  </div>
+</div>

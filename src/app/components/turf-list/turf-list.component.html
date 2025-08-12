@@ -1,0 +1,25 @@
+<div class="lottie-background left" id="lottie-left"></div>
+<div class="lottie-background right" id="lottie-right"></div>
+<div class="container">
+  <div class="hero-section">
+    <h1 id="split-heading">Find  &   Book   Your   Perfect   Pitch </h1>
+    <p id="split-subtext">The  best   turfs   in   the   city,   available   at   your   fingertips. </p>
+  </div>
+  <div class="turf-grid">
+    <div class="turf-card" *ngFor="let turf of turfs$ | async">
+      <img [src]="turf.imageUrl" class="turf-image" [alt]="turf.name">
+      <div class="turf-info">
+        <h3>{{ turf.name }}</h3>
+        <p class="location">{{ turf.location }}</p>
+        <p class="description">{{ turf.description }}</p>
+        <div class="card-footer">
+          <span class="price">₹{{ turf.price }}/hr</span>
+          <span class="rating" *ngIf="turfService.getAverageRating(turf) > 0">
+            ⭐ {{ turfService.getAverageRating(turf) | number:'1.1-1' }}
+          </span>
+          <a [routerLink]="['/turf', turf.id]" class="btn btn-primary">View Slots</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  background: var(--white-color);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+@media (min-width: 992px) {
+  .details-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: 3rem;
+  }
+}
+
+.turf-gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  object-fit: cover;
+}
+
+.booking-panel h2 {
+  margin-top: 0;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--dark-gray-color);
+}
+
+.booking-panel .location {
+  font-size: 1.1rem;
+  color: #777;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
+
+.booking-panel .price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+}
+
+.date-picker-field {
+  width: 100%;
+}
+
+.slots-container {
+  margin-top: 2rem;
+}
+
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.slot-btn {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  background: #fff;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.slot-btn.booked {
+  background-color: var(--medium-gray-color);
+  color: #aaa;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.slot-btn:not(.booked):hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.slot-btn.selected {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border-color: var(--primary-color);
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 102, 255, 0.4);
+}
+
+.booking-btn {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 16px;
+  font-size: 18px;
+}

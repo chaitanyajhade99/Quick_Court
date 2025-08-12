@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="page-header">Turf Management</div>
+  
+  <div class="form-card">
+    <h3 class="form-title">{{ isEditing ? 'Edit Turf' : 'Add New Turf' }}</h3>
+    <form [formGroup]="turfForm" (ngSubmit)="saveTurf()">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="name">Turf Name</label>
+          <input id="name" type="text" formControlName="name">
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input id="location" type="text" formControlName="location">
+        </div>
+        <div class="form-group">
+          <label for="price">Price per Hour</label>
+          <input id="price" type="number" formControlName="price">
+        </div>
+        <div class="form-group">
+          <label for="imageUrl">Image URL</label>
+          <input id="imageUrl" type="text" formControlName="imageUrl">
+        </div>
+        <div class="form-group full-width">
+          <label for="description">Description</label>
+          <textarea id="description" formControlName="description" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" [disabled]="turfForm.invalid">{{ isEditing ? 'Update Turf' : 'Add Turf' }}</button>
+        <button type="button" class="btn btn-secondary" (click)="resetForm()" *ngIf="isEditing">Cancel Edit</button>
+      </div>
+    </form>
+  </div>
+
+  <h3 class="page-header list-header">Existing Turfs</h3>
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let turf of turfs$ | async">
+          <td>{{ turf.name }}</td>
+          <td>{{ turf.location }}</td>
+          <td>₹{{ turf.price }}</td>
+          <td class="action-buttons">
+            <button class="btn btn-sm" (click)="editTurf(turf)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteTurf(turf.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

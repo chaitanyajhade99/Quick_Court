@@ -1,0 +1,8 @@
+.placeholder-card {
+    background: var(--surface-color);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    color: var(--text-light-color);
+}

@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="confirmation-wrapper" *ngIf="booking$ | async as booking">
+    <div class="confirmation-icon">
+      <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+      </svg>
+    </div>
+    <h2 class="confirmation-title">Booking Confirmed!</h2>
+    <p class="confirmation-subtitle">Your booking has been successfully placed. A confirmation has been sent to your email.</p>
+    
+    <div class="details-box">
+      <div class="detail-item">
+        <span class="label">Turf Name</span>
+        <span class="value">{{ booking.turfName }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">Date & Time</span>
+        <span class="value">{{ booking.date | date:'fullDate' }} at {{ booking.slot }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">Booking ID</span>
+        <span class="value">TURF-{{ booking.id }}</span>
+      </div>
+    </div>
+    
+    <div class="actions">
+      <a routerLink="/" class="btn btn-primary">Book Another Turf</a>
+      <a routerLink="/my-bookings" class="btn btn-secondary">View My Bookings</a>
+    </div>
+  </div>
+</div>

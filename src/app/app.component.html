@@ -1,0 +1,30 @@
+<header class="main-header">
+  <nav class="container">
+    <a class="logo" routerLink="/">
+      <ng-lottie [options]="lottieOptions"></ng-lottie>
+      <span>QuickCourt</span>
+    </a>
+    <ul class="nav-links">
+      <ng-container *ngIf="currentUser$ | async as user; else guestView">
+        <li *ngIf="user.role === 'super-admin'"><a routerLink="/admin-panel">Super Admin</a></li>
+        <li *ngIf="user.role === 'admin'"><a routerLink="/admin">Admin Panel</a></li>
+        <li><a routerLink="/my-bookings">My Bookings</a></li>
+        <li><span class="welcome-text">Welcome, {{ user.email }}!</span></li>
+        <li><button class="btn-logout" (click)="logout()">Logout</button></li>
+      </ng-container>
+      <ng-template #guestView>
+        <li><a routerLink="/login">Login</a></li>
+        <li><a routerLink="/register" class="btn btn-primary">Register</a></li>
+      </ng-template>
+      <li>
+        <button class="theme-toggle" (click)="toggleTheme()">
+          <span *ngIf="isDark$ | async">☀️</span>
+          <span *ngIf="!(isDark$ | async)">🌙</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>

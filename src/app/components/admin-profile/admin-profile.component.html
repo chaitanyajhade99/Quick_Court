@@ -1,0 +1,18 @@
+<div class="container">
+    <h2 class="page-header">Profile Page</h2>
+    <div class="form-card">
+        <h3 class="form-title">Admin Profile</h3>
+        <p>This page will allow the admin to view and update their basic information.</p>
+        <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input id="email" type="email" formControlName="email">
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" type="text" formControlName="name">
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="profileForm.invalid">Update Info</button>
+        </form>
+    </div>
+</div>

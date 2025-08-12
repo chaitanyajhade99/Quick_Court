@@ -1,0 +1,33 @@
+<div class="container">
+  <h2 class="page-header">Facility Approval</h2>
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Price</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let turf of (pendingTurfs$ | async)">
+          <td>{{ turf.name }}</td>
+          <td>{{ turf.location }}</td>
+          <td>₹{{ turf.price }}</td>
+          <td>
+            <span class="status-badge status-pending">{{ turf.status }}</span>
+          </td>
+          <td class="action-buttons">
+            <button class="btn btn-sm btn-success" (click)="approve(turf.id)">Approve</button>
+            <button class="btn btn-sm btn-danger" (click)="reject(turf.id)">Reject</button>
+          </td>
+        </tr>
+        <tr *ngIf="(pendingTurfs$ | async)?.length === 0">
+            <td colspan="5" class="text-center">No pending facilities for approval.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+.main-header {
+  background-color: var(--surface-color);
+  box-shadow: var(--box-shadow);
+  padding: 0 5%;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.main-header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo ng-lottie {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-secondary-color);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+.welcome-text {
+  color: var(--text-secondary-color);
+}
+
+.btn-logout {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary-color);
+  padding: 8px 16px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-logout:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  padding: 0;
+  color: var(--text-secondary-color);
+}

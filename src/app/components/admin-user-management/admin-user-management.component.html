@@ -1,0 +1,35 @@
+<div class="container">
+    <h2 class="page-header">User Management</h2>
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of (users$ | async)">
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.firstName }} {{ user.lastName }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>
+                        <span class="status-badge" [ngClass]="user.isBanned ? 'status-banned' : 'status-active'">
+                            {{ user.isBanned ? 'Banned' : 'Active' }}
+                        </span>
+                    </td>
+                    <td class="action-buttons">
+                        <button class="btn btn-sm" [ngClass]="user.isBanned ? 'btn-success' : 'btn-danger'" (click)="toggleBan(user.id)">
+                            {{ user.isBanned ? 'Unban' : 'Ban' }}
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

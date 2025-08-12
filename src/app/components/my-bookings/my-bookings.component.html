@@ -1,0 +1,57 @@
+<div class="container">
+  <h2 class="page-header">My Bookings</h2>
+
+  <div class="bookings-list" *ngIf="(myBookings$ | async) as bookings; else noBookings">
+    <div class="booking-card" *ngFor="let booking of bookings">
+      <div class="card-header">
+        <h3>{{ booking.turfName }}</h3>
+        <span>Booking ID: TURF-{{ booking.id }}</span>
+      </div>
+      <div class="card-body">
+        <p><strong>Date:</strong> {{ booking.date | date:'fullDate' }}</p>
+        <p><strong>Time:</strong> {{ booking.slot }}</p>
+      </div>
+      <div class="card-footer">
+        <button 
+          *ngIf="!booking.isRated" 
+          class="btn btn-secondary" 
+          (click)="toggleRatingForm(booking.id)">
+          Rate Now
+        </button>
+        <button 
+          class="btn btn-danger" 
+          (click)="cancelBooking(booking)">
+          Cancel Booking
+        </button>
+        <p *ngIf="booking.isRated" class="rated-text">⭐ Thank you for rating!</p>
+      </div>
+      
+      <div class="rating-form" *ngIf="bookingToRateId === booking.id">
+        <h4>Your Feedback</h4>
+        <form [formGroup]="ratingForm" (ngSubmit)="submitRating(booking)">
+          <div class="form-group">
+            <label>Rating</label>
+            <select formControlName="stars">
+              <option value="5">⭐⭐⭐⭐⭐ (Excellent)</option>
+              <option value="4">⭐⭐⭐⭐ (Good)</option>
+              <option value="3">⭐⭐⭐ (Average)</option>
+              <option value="2">⭐⭐ (Poor)</option>
+              <option value="1">⭐ (Terrible)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Comment (optional)</label>
+            <textarea formControlName="comment" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="ratingForm.invalid">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <ng-template #noBookings>
+    <div class="no-bookings">
+      <p>You have no bookings yet. Find a turf to get started!</p>
+      <a routerLink="/" class="btn btn-primary">Book a Turf</a>
+    </div>
+  </ng-template>
+</div>
